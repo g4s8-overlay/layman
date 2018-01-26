@@ -1,0 +1,11 @@
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>layman-test</name>
+		<description>test the layman.</description>
+		<homepage>https://github.com/g4s8-overlay/test</homepage>
+		<owner>
+			<email>g4s8.public@gmail.com</email>
+		</owner>
+		<source type="git">https://github.com/g4s8-overlay/test.git</source>
+	</repo>
+</repositories>
