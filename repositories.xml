@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
 <repositories version="1.0">
-	<repo priority="50" quality="experimental" status="unofficial">
-		<name>layman-test</name>
-		<description>test the layman.</description>
-		<homepage>https://github.com/g4s8-overlay/test</homepage>
-		<owner>
-			<email>g4s8.public@gmail.com</email>
-		</owner>
-		<source type="git">https://github.com/g4s8-overlay/test.git</source>
-	</repo>
+  <repo priority="50" quality="experimental" status="unofficial">
+    <name><![CDATA[g4s8]]></name>
+    <description><![CDATA[My Gentoo apps]]></description>
+    <homepage>https://github.com/g4s8-overlay/layman</homepage>
+    <owner>
+      <name><![CDATA[Kirill (g4s8)]]></name>
+      <email>g4s8.public@gmail.com</email>
+    </owner>
+    <source type="git">https://github.com/g4s8-overlay/layman.git</source>
+  </repo>
 </repositories>
