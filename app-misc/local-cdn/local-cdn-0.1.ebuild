@@ -14,3 +14,14 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	go get github.com/elazarl/goproxy
+	go get github.com/bclicn/color
+	go build .
+}
+
+src_install() {
+	cp -v local-cdn-0.1 ${D}/local-cdn
+}
+
