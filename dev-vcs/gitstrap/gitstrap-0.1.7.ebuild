@@ -11,38 +11,37 @@ SRC_URI="https://${REPO}/archive/${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE=""
+IUSE="test"
 
 DEPEND="dev-lang/go"
 RDEPEND="dev-vcs/git"
 
 _go_get() {
 	local name=$1
-	elog "installing dependency: $name"
 	go get -v -u $name || die "'go get' failed to get $name"
 }
 
 src_prepare() {
 	default
-	elog "creating directory structure"
 	mkdir -pv $HOME/go/src/github.com/g4s8 || die
 	ln -snv $PWD $HOME/go/src/github.com/g4s8/gitstrap || die
-	elog "installing go dependencies"
 	_go_get github.com/google/go-github/github
 	_go_get golang.org/x/oauth2
 	_go_get gopkg.in/yaml.v2
 }
 
 src_compile() {
-	go build -v -o ${PN} ./cmd/gitstrap || die "Build failed"
+	local now=$(date -u +%Y.%m.%dT%H:%M:%S)
+	emake OUTPUT=lib BUILD_VERSION=${PV} BUILD_DATE=${now} lib || die
+	go build -o ${PN} ./cmd/${PN} || die
 }
 
 src_test() {
-	go test . || die
-	elog "tests passed"
+	emake OUTPUT=lib test || die
 }
 
 src_install() {
 	dobin ${PN} || die "'${PN} installation failed"
+	elog "Read the README for details: https://github.com/g4s8/gitstrap/"
 }
 
