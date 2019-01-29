@@ -1,16 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-REPO="github.com/g4s8/${PN}"
 DESCRIPTION="Command line tool to bootstrap Github repository"
-HOMEPAGE="https://github.com/g4s8/gitstrap"
-SRC_URI="https://${REPO}/archive/${PV}.tar.gz"
+HOMEPAGE="https://github.com/g4s8/${PN}"
+SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="dev-lang/go"
@@ -41,7 +40,6 @@ src_test() {
 }
 
 src_install() {
-	dobin ${PN} || die "'${PN} installation failed"
-	elog "Read the README for details: https://github.com/g4s8/gitstrap/"
+	dobin ${PN} || die "${PN} installation failed"
+	elog "Read the README for details: ${HOMEPAGE}"
 }
-
