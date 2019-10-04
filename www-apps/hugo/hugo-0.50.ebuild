@@ -74,7 +74,7 @@ EGO_VENDOR=(
 	"github.com/pelletier/go-toml c01d1270ff3e442a8a57cddc1c92dc1138598194"
 )
 
-inherit golang-vcs-snapshot bash-completion-r1
+inherit go-module bash-completion-r1
 
 GO_DEPEND=">=dev-lang/go-1.11"
 EGO_PN="github.com/gohugoio/hugo"
@@ -84,7 +84,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="The world's fastest framework for building websites"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${EGO_VENDOR_URI}"
+	$(go-module_vendor_uris)"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+sass"
@@ -92,12 +92,10 @@ IUSE="+sass"
 RESTRICT="test"
 
 src_compile() {
-	pushd src/${EGO_PN} || die
 	mkdir -pv bin || die
-	GOPATH="${S}" go build -v -ldflags \
+	go build -ldflags \
 		"-X ${EGO_PN}/hugolib.CommitHash=${GIT_COMMIT}" \
-		$(usex sass "-tags extended" "") -o ${S}/bin/hugo || die
-	popd || die
+		$(usex sass "-tags extended" "") -o "${S}/bin/hugo" || die
 	bin/hugo gen man || die
 	bin/hugo gen autocomplete --completionfile hugo || die
 }
@@ -106,5 +104,5 @@ src_install() {
 	dobin bin/*
 	dobashcomp hugo || die
 	doman man/*
-	dodoc src/${EGO_PN}/README.md
+	dodoc README.md
 }
