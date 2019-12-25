@@ -28,8 +28,9 @@ SLOT="0"
 IUSE="alsa curl i3wm ipc mpd network pulseaudio"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+
+	# ${PYTHON_DEPS}
 DEPEND="
-	${PYTHON_DEPS}
 	x11-base/xcb-proto
 	x11-libs/cairo[xcb]
 	x11-libs/libxcb[xkb]
