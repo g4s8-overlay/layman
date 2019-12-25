@@ -1,0 +1,8 @@
+# disable pam to avoid consolekit installation
+x11-misc/cdm -pam
+
+# disable trash and udisks to avoid consolekit installation 
+xfce-base/thunar -trash-panel-plugin -udisks
+
+# enable gtk explicitely
+net-p2p/transmission gtk

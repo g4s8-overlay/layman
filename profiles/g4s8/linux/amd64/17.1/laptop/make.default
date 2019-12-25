@@ -1,0 +1,1 @@
+USE="-consolekit -policykit -dvd -dvdr -dvdnav -cdr -gtk -gtk3 -qt -qt4 -qt5 -systemd -gnome -kde -udisks"
